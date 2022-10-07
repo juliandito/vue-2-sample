@@ -1,0 +1,36 @@
+<html>
+    <body>
+        <div id="app">
+            <input type="text" @input="changeTitle">
+            <p>{{ title }}</p>
+            <p @mousemove="updateMousePos"> {{ x }} | {{ y }}
+                - <span @mousemove.stop style="background-color: black">STOP</span>
+            </p>
+            <input type="text" @keyup.enter.space="simpleAlert">
+        </div>
+    </body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Test',
+            x: 0,
+            y: 0
+        },
+        methods: {
+            changeTitle: function(event) {
+                this.title = event.target.value
+            },
+            updateMousePos: function(event) {
+                this.x = event.clientX 
+                this.y = event.clientY
+            },
+            simpleAlert: function(event) {
+                alert(event.target.value)
+            }
+        }
+    })
+</script>
