@@ -1,0 +1,61 @@
+<html>
+    <body>
+        <div id="app">
+            <p v-if="show">
+                Show 
+            </p>
+            <p v-else>
+                hide
+            </p>
+            <button @click="show = !show">show/hide</button>
+
+            <hr>
+            <ul>
+                <li v-for="item, index in arr" :key="index">
+                    {{item}}
+                </li>
+            </ul>
+            <button @click="arr.push('new-item')">add</button>
+            <hr>
+            <ul>
+                <template v-for="item, i in arr" :key="i+'-'">
+                    <h1>
+                        {{item}}
+                    </h1>
+                    <p>
+                        {{i}}
+                    </p>
+                </template>
+            </ul>
+        </div>
+    </body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+            arr: ['meat', 'fruit', 'etc'],
+            arrObject: [
+                {
+                    name: 'Kevin',
+                    age: 20,
+                    color: 'red'
+                },
+                {
+                    name: 'Ray',
+                    age: 20,
+                    color: 'blue'
+                },
+            ]
+        },
+        computed: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
